@@ -93,8 +93,8 @@ function bindUiEvents() {
 }
 
 function configureRanges() {
-  elements.radiusRange.min = String(state.config.minRadiusMeters || 300);
-  elements.radiusRange.max = String(state.config.maxRadiusMeters || 1000);
+  elements.radiusRange.min = String(state.config.minRadiusMeters || 20000);
+  elements.radiusRange.max = String(state.config.maxRadiusMeters || 20000);
 
   const clampedRadius = Math.max(
     Number(elements.radiusRange.min),
