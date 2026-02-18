@@ -93,11 +93,14 @@ label {
 }
 
 input,
+select,
 button {
   font-family: inherit;
 }
 
-input[type="text"] {
+input[type="text"],
+input[type="time"],
+select {
   width: 100%;
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.16);
@@ -157,6 +160,10 @@ input[type="range"] {
 
 .summary strong {
   color: #ffffff;
+}
+
+.hidden {
+  display: none;
 }
 
 .legend-wrap {

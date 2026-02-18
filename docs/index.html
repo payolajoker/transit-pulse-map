@@ -20,7 +20,7 @@
           <p class="eyebrow">KOREA TRANSIT ISOCHRONE</p>
           <h1>Transit Pulse</h1>
           <p class="subtitle">
-            GitHub Pages 미리보기입니다. 도보 기반 50m 격자 시각화가 동작합니다.
+            대중교통 + 도보 기준 50m 격자 시각화입니다. 키는 브라우저에만 저장됩니다.
           </p>
         </div>
 
@@ -37,6 +37,22 @@
           </div>
           <p class="hint">
             이 키는 브라우저 저장소(localStorage)에만 저장됩니다.
+          </p>
+        </div>
+
+        <div class="field-group">
+          <label for="odsayKeyInput">ODsay API 키</label>
+          <div class="inline">
+            <input
+              id="odsayKeyInput"
+              type="text"
+              placeholder="ODsay API 키 입력"
+              autocomplete="off"
+            />
+            <button id="saveOdsayBtn" type="button">저장</button>
+          </div>
+          <p class="hint">
+            미입력 시 도보만 계산됩니다.
           </p>
         </div>
 
@@ -59,6 +75,25 @@
           <label for="maxRange">최대 색상 시간</label>
           <input id="maxRange" type="range" min="20" max="120" step="5" value="60" />
           <p class="hint"><span id="maxText">60</span>분</p>
+        </div>
+
+        <div class="field-group">
+          <label for="departureMode">기준 시간</label>
+          <select id="departureMode">
+            <option value="now">현재 시각</option>
+            <option value="custom">직접 설정</option>
+          </select>
+        </div>
+
+        <div id="customTimeBox" class="field-group hidden">
+          <label for="dayType">요일 유형</label>
+          <select id="dayType">
+            <option value="weekday">평일</option>
+            <option value="saturday">토요일</option>
+            <option value="sunday">일요일</option>
+          </select>
+          <label for="timeInput">시간</label>
+          <input id="timeInput" type="time" value="08:30" />
         </div>
 
         <button id="analyzeBtn" class="analyze-btn" type="button">히트맵 계산</button>
