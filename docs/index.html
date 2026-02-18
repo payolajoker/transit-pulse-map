@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Transit Pulse Map (Preview)</title>
+    <title>Transit Pulse Map</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -20,7 +20,7 @@
           <p class="eyebrow">KOREA TRANSIT ISOCHRONE</p>
           <h1>Transit Pulse</h1>
           <p class="subtitle">
-            대중교통 + 도보 기준 1km 격자 시각화입니다.
+            목적지까지의 시간을, 출발지 중심 주변 500m 격자로 시각화합니다.
           </p>
         </div>
 
@@ -30,14 +30,11 @@
             <input
               id="kakaoKeyInput"
               type="text"
-              placeholder="카카오 JavaScript 키 입력"
+              placeholder="카카오 JavaScript 키"
               autocomplete="off"
             />
-            <button id="saveKeyBtn" type="button">저장</button>
+            <button id="saveKakaoBtn" type="button">저장</button>
           </div>
-          <p class="hint">
-            이 키는 브라우저 저장소(localStorage)에만 저장됩니다.
-          </p>
         </div>
 
         <div class="field-group">
@@ -46,35 +43,64 @@
             <input
               id="odsayKeyInput"
               type="text"
-              placeholder="ODsay API 키 입력"
+              placeholder="ODsay API 키"
               autocomplete="off"
             />
             <button id="saveOdsayBtn" type="button">저장</button>
           </div>
-          <p class="hint">
-            미입력 시 도보만 계산됩니다.
-          </p>
+          <p class="hint">키는 브라우저(localStorage)에 저장됩니다.</p>
         </div>
 
         <div class="field-group">
-          <label for="keyword">출발지 검색</label>
+          <label for="destinationKeyword">목적지 검색</label>
           <div class="inline">
-            <input id="keyword" type="text" value="판교역" placeholder="예: 판교역" />
-            <button id="searchBtn" type="button">검색</button>
+            <input
+              id="destinationKeyword"
+              type="text"
+              value="판교역"
+              placeholder="예: 판교역"
+            />
+            <button id="searchDestinationBtn" type="button">검색</button>
           </div>
-          <p id="originLabel" class="hint">출발지: 판교역</p>
+          <p id="destinationLabel" class="hint">목적지: 판교역</p>
         </div>
 
         <div class="field-group">
-          <label for="radiusRange">분석 반경</label>
-          <input id="radiusRange" type="range" min="20000" max="20000" step="1000" value="20000" />
-          <p class="hint"><span id="radiusText">20000</span>m (1km 격자)</p>
+          <label for="startKeyword">출발지 중심 검색</label>
+          <div class="inline">
+            <input
+              id="startKeyword"
+              type="text"
+              value="삼동역"
+              placeholder="예: 삼동역"
+            />
+            <button id="searchStartBtn" type="button">검색</button>
+          </div>
+          <p id="startLabel" class="hint">출발지 중심: 삼동역</p>
+        </div>
+
+        <div class="field-group">
+          <label>지도 클릭 모드</label>
+          <div class="mode-row">
+            <button id="modeDestinationBtn" class="mode-btn active" type="button">
+              목적지 지정
+            </button>
+            <button id="modeStartBtn" class="mode-btn" type="button">
+              출발지 중심 지정
+            </button>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label for="radiusRange">출발지 분석 반경</label>
+          <input id="radiusRange" type="range" min="20000" max="20000" step="500" value="20000" />
+          <p class="hint"><span id="radiusText">20000</span>m (고정 20km)</p>
         </div>
 
         <div class="field-group">
           <label for="maxRange">최대 색상 시간</label>
-          <input id="maxRange" type="range" min="20" max="120" step="5" value="60" />
-          <p class="hint"><span id="maxText">60</span>분</p>
+          <input id="maxRange" type="range" min="20" max="180" step="5" value="100" />
+          <p class="hint"><span id="maxText">100</span>분</p>
         </div>
 
         <div class="field-group">
@@ -97,7 +123,7 @@
         </div>
 
         <button id="analyzeBtn" class="analyze-btn" type="button">히트맵 계산</button>
-        <p id="status" class="status">키 로딩 중...</p>
+        <p id="status" class="status">초기화 중...</p>
         <p id="summary" class="summary"></p>
 
         <div class="legend-wrap">

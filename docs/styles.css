@@ -129,6 +129,28 @@ input[type="range"] {
   cursor: pointer;
 }
 
+.mode-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.mode-btn {
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-main);
+  padding: 10px;
+  cursor: pointer;
+}
+
+.mode-btn.active {
+  border-color: transparent;
+  background: linear-gradient(120deg, rgba(93, 226, 182, 0.9), rgba(255, 211, 79, 0.9));
+  color: #062734;
+  font-weight: 700;
+}
+
 .analyze-btn {
   margin-top: 4px;
   border: none;
