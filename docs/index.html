@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transit Pulse Map (Preview)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=IBM+Plex+Sans+KR:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="noise-layer"></div>
+    <main class="layout">
+      <section class="panel">
+        <div class="panel-top">
+          <p class="eyebrow">KOREA TRANSIT ISOCHRONE</p>
+          <h1>Transit Pulse</h1>
+          <p class="subtitle">
+            GitHub Pages 미리보기입니다. 도보 기반 50m 격자 시각화가 동작합니다.
+          </p>
+        </div>
+
+        <div class="field-group">
+          <label for="kakaoKeyInput">카카오 JavaScript 키</label>
+          <div class="inline">
+            <input
+              id="kakaoKeyInput"
+              type="text"
+              placeholder="카카오 JavaScript 키 입력"
+              autocomplete="off"
+            />
+            <button id="saveKeyBtn" type="button">저장</button>
+          </div>
+          <p class="hint">
+            이 키는 브라우저 저장소(localStorage)에만 저장됩니다.
+          </p>
+        </div>
+
+        <div class="field-group">
+          <label for="keyword">출발지 검색</label>
+          <div class="inline">
+            <input id="keyword" type="text" value="판교역" placeholder="예: 판교역" />
+            <button id="searchBtn" type="button">검색</button>
+          </div>
+          <p id="originLabel" class="hint">출발지: 판교역</p>
+        </div>
+
+        <div class="field-group">
+          <label for="radiusRange">분석 반경</label>
+          <input id="radiusRange" type="range" min="300" max="1000" step="50" value="800" />
+          <p class="hint"><span id="radiusText">800</span>m (50m 격자)</p>
+        </div>
+
+        <div class="field-group">
+          <label for="maxRange">최대 색상 시간</label>
+          <input id="maxRange" type="range" min="20" max="120" step="5" value="60" />
+          <p class="hint"><span id="maxText">60</span>분</p>
+        </div>
+
+        <button id="analyzeBtn" class="analyze-btn" type="button">히트맵 계산</button>
+        <p id="status" class="status">카카오 키를 저장하면 지도를 로드합니다.</p>
+        <p id="summary" class="summary"></p>
+
+        <div class="legend-wrap">
+          <p class="legend-title">도달 시간</p>
+          <div class="legend-bar"></div>
+          <div class="legend-labels">
+            <span>빠름</span>
+            <span>느림</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="map-wrap">
+        <div id="map"></div>
+      </section>
+    </main>
+
+    <script src="./app.js" defer></script>
+  </body>
+</html>
