@@ -4,7 +4,10 @@ const DEFAULT_ORIGIN = {
   lng: 127.1111955,
 };
 
-const GRID_SIZE_METERS = 50;
+const DEFAULT_KAKAO_JS_KEY = "c2db0ea3cf94c9b50e56b5883f54537a";
+const DEFAULT_ODSAY_API_KEY = "l2WkmLEOPXsRboziAntgKg";
+
+const GRID_SIZE_METERS = 300;
 const MIN_RADIUS_METERS = 300;
 const MAX_RADIUS_METERS = 1000;
 const MAX_TRANSIT_SAMPLES = 90;
@@ -107,8 +110,10 @@ function bindUiEvents() {
 }
 
 function loadStoredKeys() {
-  state.kakaoKey = (localStorage.getItem("KAKAO_JS_KEY") || "").trim();
-  state.odsayKey = (localStorage.getItem("ODSAY_API_KEY") || "").trim();
+  state.kakaoKey = (localStorage.getItem("KAKAO_JS_KEY") || DEFAULT_KAKAO_JS_KEY).trim();
+  state.odsayKey = (localStorage.getItem("ODSAY_API_KEY") || DEFAULT_ODSAY_API_KEY).trim();
+  localStorage.setItem("KAKAO_JS_KEY", state.kakaoKey);
+  localStorage.setItem("ODSAY_API_KEY", state.odsayKey);
   elements.kakaoKeyInput.value = state.kakaoKey;
   elements.odsayKeyInput.value = state.odsayKey;
 

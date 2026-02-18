@@ -7,7 +7,7 @@ dotenv.config();
 const app = express();
 
 const PORT = Number(process.env.PORT || 3000);
-const GRID_SIZE_METERS = 50;
+const GRID_SIZE_METERS = 300;
 const MIN_RADIUS_METERS = Number(process.env.MIN_RADIUS_METERS || 300);
 const MAX_RADIUS_METERS = Number(process.env.MAX_RADIUS_METERS || 1000);
 const MAX_TRANSIT_SAMPLES = Number(process.env.MAX_TRANSIT_SAMPLES || 90);
